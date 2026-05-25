@@ -2,7 +2,7 @@
 *.tfstate
 *.tfstate.backup
 *.pem
-./pics
+.pics/
 
 # Ansible
 inventory
