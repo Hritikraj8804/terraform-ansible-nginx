@@ -1,0 +1,31 @@
+- name: Configure Web Server
+  hosts: web
+  become: true
+
+  tasks: 
+
+    - name: Update apt cache
+      apt: 
+        update_cache: yes
+
+    - name: Install Nginx
+      apt: 
+        name: nginx
+        state: present
+
+    - name: Start Nginx
+      service: 
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Copy index.html
+      copy: 
+        src: ../website/index.html
+        dest: /var/www/html/index.html
+    
+    - name: Copy style.css
+      copy: 
+        src: ../website/style.css
+        dest: /var/www/html/style.css
+
